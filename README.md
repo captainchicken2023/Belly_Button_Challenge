@@ -37,3 +37,7 @@ Display each key-value pair from the metadata JSON object somewhere on the page.
 Update all the plots when a new sample is selected. Additionally, you are welcome to create any layout that you would like for your dashboard. 
 
 Deploy your app to a free static page hosting service, such as GitHub Pages. 
+
+
+Resources
+- 
