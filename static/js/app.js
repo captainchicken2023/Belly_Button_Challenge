@@ -1,22 +1,22 @@
 // Use the D3 library to read in samples.json from the URL 
 
-function buildmetadata(bbdata){
+function buildmetadata(sample){
     d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
       let metadata = data.metadata;
-      let resultArray = metadata.filter(sampleObject => sampleObject.id == sample);
+      let resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
       let result = resultArray[0];
       let panel = d3.select("#sample-metadata");
       panel.html("");
-      for (key in results){
+      for (key in result){
         panel.append("h6").text(`${key.toUpperCase()}:${result[key]}`);
       };
     });
 }
 
-function buildcharts(bbcharts){
+function buildcharts(sample){
   d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
     let samples = data.samples;
-    let resultArray = metadata.filter(sampleObject => sampleObject.id == sample);
+    let resultArray = samples.filter(sampleObj => sampleObj.id == sample);
     let result = resultArray[0];
     let otu_ids = result.otu_ids;
     let otu_labels = result.otu_labels;
@@ -24,10 +24,10 @@ function buildcharts(bbcharts){
 
     let bubbleLayout = {
       title: "BB Data Bubble Chart",
-      margin: {t:0}, 
+      margin: { t:0 }, 
       hovermode: "closest",
-      xaxis: {title: "x-axis"},
-      margin: {t:30}
+      xaxis: { title: "x-axis" },
+      margin: { t:30 }
     };
 
     let bubblechart = [
@@ -56,7 +56,7 @@ function buildcharts(bbcharts){
     ];
     let barLayout = {
       title: "BB Data Bar Chart",
-      margin: {t:30, l:150} 
+      margin: { t:30, l:150 } 
     };
     Plotly.newPlot("bar", barData, barLayout);
   });
@@ -67,22 +67,22 @@ function init() {
   let selector = d3.select("#selDataset");
   d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
     let sampleNames = data.names;
-    for (let i = 0; i<sampleNames.length; i++){
+    for (let i = 0; i < sampleNames.length; i++){
       selector
         .append("option")
         .text(sampleNames[i])
         .property("value", sampleNames[i]);
     };
-    let firstSample = sampleName[0];
+    let firstSample = sampleNames[0];
     buildcharts(firstSample);
     buildmetadata(firstSample);
   });
 }
 
 
-function optionChange(newSample){
+function optionchange(newSample){
   buildcharts(newSample);
-  buildmetadata(newSample)
+  buildmetadata(newSample);
 }
 
 init();
