@@ -38,6 +38,7 @@ Update all the plots when a new sample is selected. Additionally, you are welcom
 
 Deploy your app to a free static page hosting service, such as GitHub Pages. 
 
+Link to GitHub page: https://captainchicken2023.github.io/Belly_Button_Challenge/ 
 
 Resources
 - 9/23 class catch up session
