@@ -40,4 +40,5 @@ Deploy your app to a free static page hosting service, such as GitHub Pages.
 
 
 Resources
-- 
+- https://www.chartjs.org/docs/latest/charts/bar.html#horizontal-bar-chart
+- 9/23 class catch up session
