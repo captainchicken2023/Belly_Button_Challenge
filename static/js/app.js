@@ -6,8 +6,56 @@ function buildmetadata(bbdata){
       let resultArray = metadata.filter(sampleObject => sampleObject.id == sample);
       let result = resultArray[0];
       let panel = d3.select("#sample-metadata");
-    }
+      panel.html("");
+      for (key in results){
+        panel.append("h6").text(`${key.toUpperCase()}:${result[key]}`);
+      };
+    });
 }
+
+function buildcharts(bbcharts){
+  d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
+    let samples = data.samples;
+    let resultArray = metadata.filter(sampleObject => sampleObject.id == sample);
+    let result = resultArray[0];
+    let otu_ids = result.otu_ids;
+    let otu_labels = result.otu_labels;
+    let sample_values = result.sample_values;
+
+    let bubbleLayout = {
+      title: "BB Data Bubble Chart",
+      margin: {t:0}, 
+      hovermode: "closest",
+      xaxis: {title: "x-axis"},
+      margin: {t:30}
+    };
+
+    let bubblechart = [
+      {
+        x: otu_ids, 
+        y: sample_values, 
+        text: otu_labels,
+        mode: "markers",
+        marker: {
+          size: sample_values,
+          color: otu_ids,
+          colorscale: "Earth" 
+        }
+      }
+    ];
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
