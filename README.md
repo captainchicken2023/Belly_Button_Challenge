@@ -42,3 +42,4 @@ Deploy your app to a free static page hosting service, such as GitHub Pages.
 Resources
 - 9/23 class catch up session
 - http://robdunnlab.com/projects/belly-button-biodiversity/
+- https://www.cd-genomics.com/microbioseq/operational-taxonomic-unit-otu-and-otu-clustering.html

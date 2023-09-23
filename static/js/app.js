@@ -24,10 +24,10 @@ function buildcharts(sample){
 
     // Defining bubble chart parameters
     let bubbleLayout = {
-      title: "Belly Button Data Bubble Chart",
+      title: "Belly Button Sample Bubble Chart",
       margin: { t:0 }, 
       hovermode: "closest",
-      xaxis: { title: "x-axis" },
+      xaxis: { title: "OTU IDs" },
       margin: { t:30 }
     };
 
@@ -58,7 +58,7 @@ function buildcharts(sample){
       }
     ];
     let barLayout = {
-      title: "Belly Button Data Bar Chart",
+      title: "Top 10 Operational Taxonomic Units (OTUs)",
       margin: { t:30, l:150 } 
     };
     Plotly.newPlot("bar", barData, barLayout);
@@ -82,8 +82,8 @@ function init() {
   });
 }
 
-
-function optionchange(newSample){
+// Defining drop down selector action when the option changes
+function optionChanged(newSample){
   buildcharts(newSample);
   buildmetadata(newSample);
 }
