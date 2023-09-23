@@ -1,5 +1,4 @@
-// Use the D3 library to read in samples.json from the URL 
-
+// Building the metadata variables
 function buildmetadata(sample){
     d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
       let metadata = data.metadata;
@@ -13,6 +12,7 @@ function buildmetadata(sample){
     });
 }
 
+// Begin chart building
 function buildcharts(sample){
   d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
     let samples = data.samples;
@@ -22,8 +22,9 @@ function buildcharts(sample){
     let otu_labels = result.otu_labels;
     let sample_values = result.sample_values;
 
+    // Defining bubble chart parameters
     let bubbleLayout = {
-      title: "BB Data Bubble Chart",
+      title: "Belly Button Data Bubble Chart",
       margin: { t:0 }, 
       hovermode: "closest",
       xaxis: { title: "x-axis" },
@@ -44,6 +45,8 @@ function buildcharts(sample){
       }
     ];
     Plotly.newPlot("bubble", bubblechart, bubbleLayout);
+    
+    // Defining bar chart parameters
     let yticks = otu_ids.slice(0,10).map(otuID => `OTU ${otuID}`).reverse();
     let barData = [
       {
@@ -51,18 +54,18 @@ function buildcharts(sample){
         x: sample_values.slice(0,10).reverse(),
         text: otu_labels.slice(0,10).reverse(),
         type: "bar",
-        orientation: "h", //may need to remove comma
+        orientation: "h", 
       }
     ];
     let barLayout = {
-      title: "BB Data Bar Chart",
+      title: "Belly Button Data Bar Chart",
       margin: { t:30, l:150 } 
     };
     Plotly.newPlot("bar", barData, barLayout);
   });
 }
 
-
+// Defining drop down selector properties
 function init() {
   let selector = d3.select("#selDataset");
   d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then((data) => {
@@ -85,6 +88,7 @@ function optionchange(newSample){
   buildmetadata(newSample);
 }
 
+// Initialize the dashboard
 init();
 
 
