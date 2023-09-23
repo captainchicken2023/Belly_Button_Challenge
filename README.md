@@ -43,3 +43,4 @@ Resources
 - 9/23 class catch up session
 - http://robdunnlab.com/projects/belly-button-biodiversity/
 - https://www.cd-genomics.com/microbioseq/operational-taxonomic-unit-otu-and-otu-clustering.html
+- https://plotly.com/
